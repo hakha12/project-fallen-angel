@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://cs707yor5qs38"]
+
+[ext_resource type="Texture2D" uid="uid://cldea6irhnlbo" path="res://level/backgrounds/background_1.png" id="1_44x8d"]
+[ext_resource type="Script" uid="uid://yqmrte84e4xo" path="res://level/level.gd" id="1_ivpvi"]
+[ext_resource type="Texture2D" uid="uid://c3mhuyqchvxes" path="res://level/backgrounds/background_2.png" id="2_ivpvi"]
+[ext_resource type="Texture2D" uid="uid://wyi3frogcdhu" path="res://level/backgrounds/background_3.png" id="3_0v1st"]
+[ext_resource type="Texture2D" uid="uid://q80g7ockitpt" path="res://level/backgrounds/background_4.png" id="4_6gtgk"]
+[ext_resource type="Texture2D" uid="uid://qnxoo2h0aqd5" path="res://level/backgrounds/background_5.png" id="5_cw150"]
+[ext_resource type="Texture2D" uid="uid://cyxa6mgqdkwi6" path="res://level/ground.png" id="6_xii2b"]
+[ext_resource type="Script" uid="uid://bqnngfxtgn7ew" path="res://level/enemy_spawner.gd" id="8_0v1st"]
+[ext_resource type="PackedScene" uid="uid://ioho3wq00045" path="res://player/player.tscn" id="9_6gtgk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rhqlf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_44x8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ivpvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0v1st")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6gtgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cw150")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5lfc"]
+size = Vector2(449, 362)
+
+[node name="Level" type="Node2D" unique_id=1168569189]
+script = ExtResource("1_ivpvi")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1340717413]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.1818161, 0.09972019, 0.043862857, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background" unique_id=1102873932]
+position = Vector2(640, 360)
+sprite_frames = SubResource("SpriteFrames_rhqlf")
+frame_progress = 0.32102686
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=1349991729]
+script = ExtResource("8_0v1st")
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawner" unique_id=509604372]
+
+[node name="Player" parent="." unique_id=647429366 instance=ExtResource("9_6gtgk")]
+position = Vector2(641, 611)
+max_wiggle = 20.0
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=490585709]
+position = Vector2(640, 844.675)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=1875097010]
+position = Vector2(0, -64.67499)
+texture = ExtResource("6_xii2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1446466842]
+position = Vector2(0.5, -50.674988)
+shape = SubResource("RectangleShape2D_l5lfc")
+
+[node name="NightForeground" type="ColorRect" parent="." unique_id=1546973963]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.18039216, 0.09803922, 0.043137256, 0.7607843)
+
+[node name="DayTimer" type="Timer" parent="." unique_id=753066469]
+
+[node name="NightTimer" type="Timer" parent="." unique_id=1448936605]
+
+[connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
+[connection signal="timeout" from="NightTimer" to="." method="_on_night_timer_timeout"]

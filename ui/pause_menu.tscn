@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cy30m1ps0eeo5"]
+
+[ext_resource type="FontFile" uid="uid://cvxvfk8q54tg0" path="res://ui/font/PixelifySans-Bold.ttf" id="1_50142"]
+[ext_resource type="Script" uid="uid://bsckyqvkltq6x" path="res://ui/pause_menu.gd" id="1_ejwgg"]
+
+[node name="PauseMenu" type="Control" unique_id=1747117682]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_ejwgg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1647606684]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.92156863, 0.59607846, 0.40392157, 0.32941177)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=535784568]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=1955165692]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_50142")
+theme_override_font_sizes/font_size = 100
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1

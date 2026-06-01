@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://rx7vbgs2ud5"]
+
+[ext_resource type="PackedScene" uid="uid://4xmskruy3akd" path="res://enemies/enemy.tscn" id="1_5ndmw"]
+[ext_resource type="Script" uid="uid://ub3ud64q6fv5" path="res://enemies/laughing_face.gd" id="2_unqup"]
+[ext_resource type="SpriteFrames" uid="uid://dt5r38vnuufyv" path="res://enemies/laughing_face_spriteframe.tres" id="3_5hpe8"]
+
+[node name="Enemy" unique_id=2134187204 instance=ExtResource("1_5ndmw")]
+script = ExtResource("2_unqup")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=765250784]
+sprite_frames = ExtResource("3_5hpe8")

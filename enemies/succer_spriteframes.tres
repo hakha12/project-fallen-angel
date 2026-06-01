@@ -1,0 +1,35 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://i0vbby1e30km"]
+
+[ext_resource type="Texture2D" uid="uid://bi556rk073ydl" path="res://enemies/enemies_spritesheet.png" id="1_ny2a3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwelu"]
+atlas = ExtResource("1_ny2a3")
+region = Rect2(0, 360, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3seo"]
+atlas = ExtResource("1_ny2a3")
+region = Rect2(120, 360, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87ghl"]
+atlas = ExtResource("1_ny2a3")
+region = Rect2(240, 360, 120, 120)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwelu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3seo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87ghl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3seo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

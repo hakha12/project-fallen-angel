@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://4xmskruy3akd"]
+
+[ext_resource type="Script" uid="uid://dk6mfa4re07uq" path="res://enemies/enemy.gd" id="1_fw1ev"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a6vjd"]
+radius = 47.010635
+
+[node name="Enemy" type="CharacterBody2D" unique_id=2134187204]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_fw1ev")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=765250784]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1756850631]
+shape = SubResource("CircleShape2D_a6vjd")
+
+[node name="DetectorUp" type="RayCast2D" parent="." unique_id=1946428000]
+target_position = Vector2(0, -100)
+collision_mask = 5
+
+[node name="DetectorDown" type="RayCast2D" parent="." unique_id=1850195176]
+target_position = Vector2(0, 100)
+collision_mask = 5
+
+[node name="DetectorLeft" type="RayCast2D" parent="." unique_id=1538780229]
+target_position = Vector2(-100, 0)
+collision_mask = 5
+
+[node name="DetectorRight" type="RayCast2D" parent="." unique_id=1827395941]
+target_position = Vector2(100, 0)
+collision_mask = 5
+
+[node name="JumpTimer" type="Timer" parent="." unique_id=1179264268]
+wait_time = 0.5
+autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=841864509]
+rect = Rect2(-50, -50, 100, 100)
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

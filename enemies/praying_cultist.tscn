@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://o5yiasi5q3yw"]
+
+[ext_resource type="PackedScene" uid="uid://4xmskruy3akd" path="res://enemies/enemy.tscn" id="1_jcxab"]
+[ext_resource type="Script" uid="uid://c31iqcc3ns7ak" path="res://enemies/praying_cultist.gd" id="2_kgq20"]
+[ext_resource type="SpriteFrames" uid="uid://qfsu78u2ssk4" path="res://enemies/praying_cultist_sprite_frames.tres" id="3_4finb"]
+
+[node name="Enemy" unique_id=2134187204 instance=ExtResource("1_jcxab")]
+script = ExtResource("2_kgq20")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=765250784]
+sprite_frames = ExtResource("3_4finb")

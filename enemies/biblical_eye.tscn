@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c025ynx11knau"]
+
+[ext_resource type="PackedScene" uid="uid://4xmskruy3akd" path="res://enemies/enemy.tscn" id="1_p0wco"]
+[ext_resource type="Script" uid="uid://bandkl48yruv1" path="res://enemies/biblical_eye.gd" id="2_ux3py"]
+[ext_resource type="SpriteFrames" uid="uid://d3m7uhy03jvfa" path="res://enemies/biblical_eye_sprite_frames.tres" id="3_fcpqk"]
+
+[node name="Enemy" unique_id=2134187204 instance=ExtResource("1_p0wco")]
+script = ExtResource("2_ux3py")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=765250784]
+sprite_frames = ExtResource("3_fcpqk")
