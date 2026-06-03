@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bex57oag2uvrl"]
+
+[ext_resource type="Script" uid="uid://b1qfrywirlhlm" path="res://item/crystal.gd" id="1_h6gxg"]
+
+[node name="Crystal" type="RigidBody2D" unique_id=111954039]
+script = ExtResource("1_h6gxg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1936068726]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=46952945]
