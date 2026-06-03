@@ -51,6 +51,8 @@ frame_progress = 0.32102686
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1349991729]
 script = ExtResource("8_0v1st")
+min_spawn_time = 0.5
+max_spawn_time = 1.75
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner" unique_id=509604372]
 

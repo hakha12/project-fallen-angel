@@ -11,6 +11,11 @@ func _ready() -> void:
 	$DayTimer.start()
 	$NightForeground.visible = false
 
+func _unhandled_input(event: InputEvent) -> void:
+	# Immediately progress to night time
+	if event.is_action_pressed("ui_accept"):
+		if not $DayTimer.is_stopped():
+			$DayTimer.timeout.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
