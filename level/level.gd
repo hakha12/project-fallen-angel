@@ -30,6 +30,7 @@ func _on_day_timer_timeout() -> void:
 	$NightTimer.wait_time = night_duration
 	$NightTimer.start()
 	$EnemySpawner/SpawnTimer.start()
+	$CrystalSpawner/SpawnTimer.start()
 
 
 func _on_night_timer_timeout() -> void:
@@ -40,6 +41,8 @@ func _on_night_timer_timeout() -> void:
 
 	$NightTimer.stop()
 
-	
 	$EnemySpawner/SpawnTimer.stop()
 	$EnemySpawner.destroy()
+	
+	$CrystalSpawner/SpawnTimer.stop()
+	$CrystalSpawner.destroy()

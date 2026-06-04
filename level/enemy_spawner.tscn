@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cchurm57n5w8y"]
+
+[ext_resource type="Script" uid="uid://bqnngfxtgn7ew" path="res://level/enemy_spawner.gd" id="1_vdsqh"]
+
+[node name="EnemySpawner" type="Node2D" unique_id=1368029096]
+script = ExtResource("1_vdsqh")
+min_spawn_time = 0.5
+max_spawn_time = 1.75
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1436272462]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

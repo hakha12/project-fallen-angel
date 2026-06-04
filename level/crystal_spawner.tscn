@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://clof27kgiyf2q"]
+
+[ext_resource type="Script" uid="uid://cd85qf87hq6jm" path="res://level/crystal_spawner.gd" id="1_c8un4"]
+
+[node name="CrystalSpawner" type="Node2D" unique_id=1209211049]
+script = ExtResource("1_c8un4")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1051870976]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -1,10 +1,30 @@
 [gd_scene format=3 uid="uid://bex57oag2uvrl"]
 
 [ext_resource type="Script" uid="uid://b1qfrywirlhlm" path="res://item/crystal.gd" id="1_h6gxg"]
+[ext_resource type="SpriteFrames" uid="uid://ckaowaj7grtgb" path="res://item/crystal_sprite_frames.tres" id="2_vwjju"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_thp8g"]
+radius = 53.037724
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tp6xr"]
+radius = 41.4367
 
 [node name="Crystal" type="RigidBody2D" unique_id=111954039]
+collision_layer = 8
+collision_mask = 6
 script = ExtResource("1_h6gxg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1936068726]
+sprite_frames = ExtResource("2_vwjju")
+frame_progress = 0.7010889
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=46952945]
+shape = SubResource("CircleShape2D_thp8g")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1508296016]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=2098591361]
+shape = SubResource("CircleShape2D_tp6xr")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

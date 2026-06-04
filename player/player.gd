@@ -1,4 +1,10 @@
+class_name Player
 extends CharacterBody2D
+
+signal item_collected(item_type: RigidBody2D)
+signal player_hit(damage: int)
+
+@export var health : int = 100
 
 @export var wiggling_speed := 80.0
 @export var max_wiggle := 10.0
