@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cchurm57n5w8y" path="res://level/enemy_spawner.tscn" id="7_6gtgk"]
 [ext_resource type="PackedScene" uid="uid://ioho3wq00045" path="res://player/player.tscn" id="9_6gtgk"]
 [ext_resource type="PackedScene" uid="uid://clof27kgiyf2q" path="res://level/crystal_spawner.tscn" id="9_cw150"]
+[ext_resource type="Script" uid="uid://plly8ldh7cwv" path="res://level/bow_spawner.gd" id="10_rhqlf"]
+[ext_resource type="Script" uid="uid://bmt4n8kbpfd27" path="res://level/sun_spawner.gd" id="10_xii2b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rhqlf"]
 animations = [{
@@ -73,6 +75,12 @@ visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.18039216, 0.09803922, 0.043137256, 0.7607843)
+
+[node name="BowSpawner" type="Node2D" parent="." unique_id=1081035594]
+script = ExtResource("10_rhqlf")
+
+[node name="SunSpawner" type="Node2D" parent="." unique_id=674664519]
+script = ExtResource("10_xii2b")
 
 [node name="CrystalSpawner" parent="." unique_id=1209211049 instance=ExtResource("9_cw150")]
 crystal_scale_factor = 0.25

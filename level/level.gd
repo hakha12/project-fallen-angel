@@ -1,3 +1,4 @@
+class_name Level
 extends Node2D
 
 @export var day_duration: float = 15.0
@@ -46,3 +47,10 @@ func _on_night_timer_timeout() -> void:
 	
 	$CrystalSpawner/SpawnTimer.stop()
 	$CrystalSpawner.destroy()
+	$BowSpawner.destroy()
+
+func _on_spawn_sun() -> void:
+	if $NightTimer.is_stopped(): return
+	else: 
+		$NightTimer.timeout.emit()
+		$SunSpawner.sun_used.emit()

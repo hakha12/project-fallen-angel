@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://vruyfjhjbbxt"]
+
+[ext_resource type="Script" uid="uid://okkt1vp355cn" path="res://item/bow.gd" id="1_oyo54"]
+[ext_resource type="Texture2D" uid="uid://bvkvswk4q5jmp" path="res://item/bow.png" id="1_wc1cy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oyo54"]
+height = 236.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_answu"]
+height = 258.0
+
+[node name="Bow" type="RigidBody2D" unique_id=541442840]
+collision_layer = 16
+collision_mask = 21
+script = ExtResource("1_oyo54")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1215204645]
+texture = ExtResource("1_wc1cy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=823368598]
+shape = SubResource("CapsuleShape2D_oyo54")
+
+[node name="ObjectDetector" type="Area2D" parent="." unique_id=712286893]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectDetector" unique_id=467935411]
+shape = SubResource("CapsuleShape2D_answu")
+debug_color = Color(0.7762852, 0.42696884, 0.30185327, 0.41960785)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1035022102]
+
+[connection signal="body_entered" from="ObjectDetector" to="." method="_on_object_detector_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

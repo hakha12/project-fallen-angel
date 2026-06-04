@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cs707yor5qs38" path="res://level/level.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://cv08naovgtxj5" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cy30m1ps0eeo5" path="res://ui/pause_menu.tscn" id="2_feb5d"]
-[ext_resource type="PackedScene" uid="uid://bc6o27861uwv2" path="res://ui/item_counter.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://bc6o27861uwv2" path="res://ui/item_manager.tscn" id="4_fc0e3"]
+[ext_resource type="Script" uid="uid://cuuyuqjunm8dr" path="res://ui/health_manager.gd" id="5_eow3j"]
+[ext_resource type="PackedScene" uid="uid://iiwgr7lhim4u" path="res://ui/item_counter.tscn" id="5_ryrav"]
+[ext_resource type="Texture2D" uid="uid://dqq6yfwqnoywc" path="res://item/health.png" id="6_eow3j"]
 
 [node name="Game" type="Node" unique_id=1035654300]
 script = ExtResource("1_feb5d")
@@ -12,7 +15,28 @@ script = ExtResource("1_feb5d")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=97055460]
 
-[node name="ItemCounter" parent="UI" unique_id=1655852722 instance=ExtResource("4_fc0e3")]
+[node name="ItemManager" parent="UI" unique_id=1655852722 instance=ExtResource("4_fc0e3")]
+offset_top = 111.0
+offset_right = 143.0
+offset_bottom = 181.0
+bow_counter = 99
+super_bow_counter = 99
+sun_counter = 99
 
 [node name="PauseMenu" parent="UI" unique_id=1747117682 instance=ExtResource("2_feb5d")]
 visible = false
+
+[node name="HealthManager" type="Control" parent="UI" unique_id=564016328]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_eow3j")
+
+[node name="HealthCounter" parent="UI/HealthManager" unique_id=2057606301 instance=ExtResource("5_ryrav")]
+layout_mode = 0
+offset_right = 116.0
+offset_bottom = 96.0
+min_size = 96.0
+icon = ExtResource("6_eow3j")
+initial_value = 1000

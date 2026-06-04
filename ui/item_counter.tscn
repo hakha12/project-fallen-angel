@@ -1,83 +1,20 @@
-[gd_scene format=3 uid="uid://bc6o27861uwv2"]
+[gd_scene format=3 uid="uid://iiwgr7lhim4u"]
 
 [ext_resource type="Texture2D" uid="uid://duygj0v4erai5" path="res://item/crystal_ui_cuzgodotuiapparentlysuckswithspritesheet.png" id="1_55pnr"]
-[ext_resource type="Texture2D" uid="uid://bvkvswk4q5jmp" path="res://item/bow.png" id="1_dibxf"]
-[ext_resource type="Script" uid="uid://b8f2me1ryefal" path="res://ui/item_counter.gd" id="1_le6p2"]
+[ext_resource type="Script" uid="uid://b700du5qwtccv" path="res://ui/item_counter.gd" id="1_le6p2"]
 [ext_resource type="FontFile" uid="uid://cvxvfk8q54tg0" path="res://ui/font/PixelifySans-Bold.ttf" id="2_le6p2"]
-[ext_resource type="Texture2D" uid="uid://dx6c8jvt17ct" path="res://item/super_bows.png" id="2_wffyb"]
-[ext_resource type="Texture2D" uid="uid://bjja47nyhu0r7" path="res://item/sun.png" id="3_3hp3l"]
-[ext_resource type="FontFile" uid="uid://bxyn81cd3b5aq" path="res://ui/font/PixelifySans-Medium.ttf" id="4_168ry"]
 
-[node name="ItemCounter" type="Control" unique_id=1655852722]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ItemCounter" type="HBoxContainer" unique_id=2057606301]
 script = ExtResource("1_le6p2")
 
-[node name="Container" type="VBoxContainer" parent="." unique_id=676955566]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Crystal" type="HBoxContainer" parent="Container" unique_id=1292434327]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Container/Crystal" unique_id=1272883067]
+[node name="Icon" type="TextureRect" parent="." unique_id=491144248]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 texture = ExtResource("1_55pnr")
 expand_mode = 1
 
-[node name="Use" type="Label" parent="Container/Crystal" unique_id=1086512339]
+[node name="Use" type="Label" parent="." unique_id=789807874]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_le6p2")
 theme_override_font_sizes/font_size = 27
-text = "0"
-
-[node name="HSeparator" type="HSeparator" parent="Container" unique_id=1477300440]
-visibility_layer = 0
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="Bow" type="HBoxContainer" parent="Container" unique_id=1137830318]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Container/Bow" unique_id=178553533]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("1_dibxf")
-expand_mode = 1
-
-[node name="Use" type="Label" parent="Container/Bow" unique_id=1507991821]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_168ry")
-text = "0"
-
-[node name="SuperBow" type="HBoxContainer" parent="Container" unique_id=375105242]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Container/SuperBow" unique_id=699535610]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("2_wffyb")
-expand_mode = 1
-
-[node name="Use" type="Label" parent="Container/SuperBow" unique_id=1641471163]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_168ry")
-text = "0"
-
-[node name="Sun" type="HBoxContainer" parent="Container" unique_id=1296817353]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Container/Sun" unique_id=633853961]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("3_3hp3l")
-expand_mode = 1
-
-[node name="Use" type="Label" parent="Container/Sun" unique_id=472756422]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_168ry")
 text = "0"

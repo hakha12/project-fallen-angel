@@ -27,4 +27,7 @@ collision_layer = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=2098591361]
 shape = SubResource("CircleShape2D_tp6xr")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1367009496]
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

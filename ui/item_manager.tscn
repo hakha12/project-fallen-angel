@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bc6o27861uwv2"]
+
+[ext_resource type="Texture2D" uid="uid://duygj0v4erai5" path="res://item/crystal_ui_cuzgodotuiapparentlysuckswithspritesheet.png" id="1_55pnr"]
+[ext_resource type="Texture2D" uid="uid://bvkvswk4q5jmp" path="res://item/bow.png" id="1_dibxf"]
+[ext_resource type="Script" uid="uid://b8f2me1ryefal" path="res://ui/item_manager.gd" id="1_le6p2"]
+[ext_resource type="PackedScene" uid="uid://iiwgr7lhim4u" path="res://ui/item_counter.tscn" id="2_t34ng"]
+[ext_resource type="Texture2D" uid="uid://dx6c8jvt17ct" path="res://item/super_bows.png" id="2_wffyb"]
+[ext_resource type="Texture2D" uid="uid://bjja47nyhu0r7" path="res://item/sun.png" id="3_3hp3l"]
+
+[node name="ItemManager" type="Control" unique_id=1655852722]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_le6p2")
+
+[node name="Container" type="VBoxContainer" parent="." unique_id=676955566]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Crystal" parent="Container" unique_id=2057606301 instance=ExtResource("2_t34ng")]
+layout_mode = 2
+min_size = 96.0
+icon = ExtResource("1_55pnr")
+
+[node name="HSeparator" type="HSeparator" parent="Container" unique_id=1477300440]
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Bow" parent="Container" unique_id=107737295 instance=ExtResource("2_t34ng")]
+layout_mode = 2
+icon = ExtResource("1_dibxf")
+
+[node name="SuperBow" parent="Container" unique_id=2036741656 instance=ExtResource("2_t34ng")]
+layout_mode = 2
+icon = ExtResource("2_wffyb")
+
+[node name="Sun" parent="Container" unique_id=1109246809 instance=ExtResource("2_t34ng")]
+layout_mode = 2
+icon = ExtResource("3_3hp3l")

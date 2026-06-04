@@ -1,24 +1,14 @@
-extends Control
+extends HBoxContainer
 
-var coin_counter :int = 0
-
+@export var min_size: float = 64.0
+@export var icon: Texture2D
+@export var initial_value: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Icon.texture = icon
+	$Icon.custom_minimum_size = Vector2(min_size, min_size)
+	$Use.set_text(str(initial_value))
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func collect_coin():
-	coin_counter += 1
-	
-	$Container/Crystal/Use.set_text(str(coin_counter))
-
-func purchase_item(item_type: int):
-	pass
-
-func _on_player_item_collected(item: RigidBody2D) -> void:
-	if item is Crystal: collect_coin()
+func update_label(data: int) -> void:
+	$Use.set_text(str(data))
