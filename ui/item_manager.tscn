@@ -23,6 +23,7 @@ offset_bottom = 40.0
 layout_mode = 2
 min_size = 96.0
 icon = ExtResource("1_55pnr")
+has_use_button = false
 
 [node name="HSeparator" type="HSeparator" parent="Container" unique_id=1477300440]
 visibility_layer = 0
@@ -32,11 +33,17 @@ layout_mode = 2
 [node name="Bow" parent="Container" unique_id=107737295 instance=ExtResource("2_t34ng")]
 layout_mode = 2
 icon = ExtResource("1_dibxf")
+keyboard_shortcut = "Q"
+action_event = &"use_bow"
 
 [node name="SuperBow" parent="Container" unique_id=2036741656 instance=ExtResource("2_t34ng")]
 layout_mode = 2
 icon = ExtResource("2_wffyb")
+keyboard_shortcut = "W"
+action_event = &"use_super_bow"
 
 [node name="Sun" parent="Container" unique_id=1109246809 instance=ExtResource("2_t34ng")]
 layout_mode = 2
 icon = ExtResource("3_3hp3l")
+keyboard_shortcut = "R"
+action_event = &"use_sun"

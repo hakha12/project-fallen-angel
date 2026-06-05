@@ -16,5 +16,14 @@ expand_mode = 1
 [node name="Use" type="Label" parent="." unique_id=789807874]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_le6p2")
-theme_override_font_sizes/font_size = 27
+theme_override_font_sizes/font_size = 24
 text = "0"
+
+[node name="VSeparator" type="VSeparator" parent="." unique_id=1449028905]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="." unique_id=1872554582]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_le6p2")
+theme_override_font_sizes/font_size = 24
+text = "Use"

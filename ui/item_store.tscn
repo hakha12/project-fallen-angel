@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b2uaorm67tm82"]
+
+[ext_resource type="Script" uid="uid://xwetn07ru6mb" path="res://ui/item_store.gd" id="1_0wgrk"]
+[ext_resource type="PackedScene" uid="uid://1q77nr4v3dkq" path="res://ui/store_counter.tscn" id="1_3g13g"]
+[ext_resource type="Texture2D" uid="uid://bvkvswk4q5jmp" path="res://item/bow.png" id="2_0wgrk"]
+[ext_resource type="FontFile" uid="uid://cvxvfk8q54tg0" path="res://ui/font/PixelifySans-Bold.ttf" id="2_dithk"]
+[ext_resource type="Texture2D" uid="uid://dx6c8jvt17ct" path="res://item/super_bows.png" id="3_dithk"]
+[ext_resource type="Texture2D" uid="uid://bjja47nyhu0r7" path="res://item/sun.png" id="4_qymam"]
+
+[node name="ItemStore" type="Control" unique_id=206594859]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 392.0
+offset_bottom = 144.0
+script = ExtResource("1_0wgrk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2016094962]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=993938736]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_dithk")
+theme_override_font_sizes/font_size = 36
+text = "Item Shop"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=718189329]
+layout_mode = 2
+
+[node name="Container" type="HBoxContainer" parent="VBoxContainer" unique_id=1601079233]
+layout_mode = 2
+
+[node name="Bow" parent="VBoxContainer/Container" unique_id=883170132 instance=ExtResource("1_3g13g")]
+layout_mode = 2
+item_name = "Bow"
+min_size = 64.0
+icon = ExtResource("2_0wgrk")
+price = 3
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Container" unique_id=1350350477]
+layout_mode = 2
+
+[node name="SuperBow" parent="VBoxContainer/Container" unique_id=885620175 instance=ExtResource("1_3g13g")]
+layout_mode = 2
+item_name = "S. Bow"
+min_size = 64.0
+icon = ExtResource("3_dithk")
+price = 20
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Container" unique_id=1556178784]
+layout_mode = 2
+
+[node name="Sun" parent="VBoxContainer/Container" unique_id=1172374300 instance=ExtResource("1_3g13g")]
+layout_mode = 2
+item_name = "Sun"
+min_size = 64.0
+icon = ExtResource("4_qymam")
+price = 40
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=195629685]
+layout_mode = 2

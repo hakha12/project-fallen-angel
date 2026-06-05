@@ -4,7 +4,7 @@ signal bow_used(count: int)
 
 @export var left_spawn_limit: float = 100
 @export var right_spawn_limit: float = 1180
-@export var bow_scale_factor: float = 0.75
+@export var bow_scale_factor: float = 0.25
 
 var bow: PackedScene = preload("res://item/bow.tscn")
 

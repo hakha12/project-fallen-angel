@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://1q77nr4v3dkq"]
+
+[ext_resource type="FontFile" uid="uid://bxyn81cd3b5aq" path="res://ui/font/PixelifySans-Medium.ttf" id="1_6vovp"]
+[ext_resource type="Script" uid="uid://bfsn2kycgr5p1" path="res://ui/store_counter.gd" id="1_t0bxj"]
+[ext_resource type="Texture2D" uid="uid://duygj0v4erai5" path="res://item/crystal_ui_cuzgodotuiapparentlysuckswithspritesheet.png" id="2_71ahq"]
+[ext_resource type="FontFile" uid="uid://cvxvfk8q54tg0" path="res://ui/font/PixelifySans-Bold.ttf" id="3_t0bxj"]
+
+[node name="StoreCounter" type="VBoxContainer" unique_id=883170132]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_t0bxj")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1415483187]
+custom_minimum_size = Vector2(122, 32)
+layout_mode = 2
+texture = ExtResource("2_71ahq")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=329512696]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6vovp")
+theme_override_font_sizes/font_size = 24
+text = "Super Bow"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=52125246]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t0bxj")
+theme_override_font_sizes/font_size = 24
+text = "Buy
+1000"
