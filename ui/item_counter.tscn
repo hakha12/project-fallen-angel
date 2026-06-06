@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://duygj0v4erai5" path="res://item/crystal_ui_cuzgodotuiapparentlysuckswithspritesheet.png" id="1_55pnr"]
 [ext_resource type="Script" uid="uid://b700du5qwtccv" path="res://ui/item_counter.gd" id="1_le6p2"]
 [ext_resource type="FontFile" uid="uid://cvxvfk8q54tg0" path="res://ui/font/PixelifySans-Bold.ttf" id="2_le6p2"]
+[ext_resource type="AudioStream" uid="uid://wvsp3xxwy1k" path="res://ui/selection_fail.wav" id="4_3hp3l"]
+[ext_resource type="AudioStream" uid="uid://bv0xbi6omfkil" path="res://ui/selection_success.wav" id="4_wffyb"]
 
 [node name="ItemCounter" type="HBoxContainer" unique_id=2057606301]
 script = ExtResource("1_le6p2")
@@ -27,3 +29,16 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_le6p2")
 theme_override_font_sizes/font_size = 24
 text = "Use"
+
+[node name="NotEnoughText" type="Label" parent="." unique_id=1247353787]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_le6p2")
+theme_override_font_sizes/font_size = 24
+text = "   SLOT EMPTY ! !"
+
+[node name="ButtonFailSound" type="AudioStreamPlayer2D" parent="." unique_id=909840097]
+stream = ExtResource("4_3hp3l")
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="." unique_id=1533746506]
+stream = ExtResource("4_wffyb")

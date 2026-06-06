@@ -14,6 +14,8 @@ var direction: Vector2
 	"right": $DetectorRight,
 }
 
+@onready var death_sound: AudioStreamPlayer2D = $DeathSound
+
 func _ready() -> void:
 	$JumpTimer.wait_time = jump_timer
 	
@@ -29,3 +31,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body is Player: body.player_hit.emit(1)
+
+
+func _on_death_sound_finished() -> void:
+	queue_free()

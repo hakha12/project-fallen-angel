@@ -12,6 +12,7 @@ func _ready() -> void:
 	$UI/ItemManager.spawn_bow.connect($Level/BowSpawner._on_bow_spawn)
 	$Level/BowSpawner.bow_used.connect($UI/ItemManager._on_bow_used)
 	$UI/ItemStore.item_selected.connect($UI/ItemManager._on_store_item_selected)
+	$UI/ItemManager.item_purchase.connect($UI/ItemStore._on_item_purchase)
 	
 	$UI/ItemManager.hide()
 	$UI/ItemStore.hide()

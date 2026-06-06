@@ -23,11 +23,12 @@ func _on_bow_spawn(count: int) -> void:
 	if night.is_stopped(): return
 	
 	for i in count:
-		var new_bow = bow.instantiate()
+		var new_bow = bow.instantiate() as Bow
 		
 		new_bow.position = Vector2(randf_range(left_spawn_limit, right_spawn_limit), randf_range(-240, -480))
 		new_bow.scale = Vector2(bow_scale_factor, bow_scale_factor)
 		add_child(new_bow)
+		
 	
 	bow_used.emit(count)
 	

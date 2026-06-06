@@ -57,6 +57,3 @@ item_name = "Sun"
 min_size = 64.0
 icon = ExtResource("4_qymam")
 price = 40
-
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=195629685]
-layout_mode = 2

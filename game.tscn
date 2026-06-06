@@ -20,6 +20,8 @@ script = ExtResource("1_feb5d")
 offset_top = 111.0
 offset_right = 143.0
 offset_bottom = 181.0
+bow_counter = 99
+super_bow_counter = 99
 
 [node name="PauseMenu" parent="UI" unique_id=1747117682 instance=ExtResource("2_feb5d")]
 visible = false

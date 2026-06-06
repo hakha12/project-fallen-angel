@@ -7,11 +7,16 @@ extends HBoxContainer
 @export var keyboard_shortcut: String # One that shows in game
 @export var action_event: StringName
 
+@onready var button_sound: AudioStreamPlayer2D = $ButtonSound
+@onready var button_fail_sound: AudioStreamPlayer2D = $ButtonFailSound
+@onready var not_enough: Label = $NotEnoughText
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Icon.texture = icon
 	$Icon.custom_minimum_size = Vector2(min_size, min_size)
 	$Use.set_text(str(initial_value))
+	not_enough.hide()
 	
 	if not has_use_button:
 		$Button.disabled = true

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://4xmskruy3akd"]
 
 [ext_resource type="Script" uid="uid://dk6mfa4re07uq" path="res://enemies/enemy.gd" id="1_fw1ev"]
+[ext_resource type="AudioStream" uid="uid://c6nirvrxur6ns" path="res://enemies/enemy_dies.wav" id="2_7frlh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fw1ev"]
 radius = 52.03845
@@ -48,6 +49,10 @@ autostart = true
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=841864509]
 rect = Rect2(-50, -50, 100, 100)
 
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=481959079]
+stream = ExtResource("2_7frlh")
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="finished" from="DeathSound" to="." method="_on_death_sound_finished"]

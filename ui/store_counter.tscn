@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://bfsn2kycgr5p1" path="res://ui/store_counter.gd" id="1_t0bxj"]
 [ext_resource type="Texture2D" uid="uid://duygj0v4erai5" path="res://item/crystal_ui_cuzgodotuiapparentlysuckswithspritesheet.png" id="2_71ahq"]
 [ext_resource type="FontFile" uid="uid://cvxvfk8q54tg0" path="res://ui/font/PixelifySans-Bold.ttf" id="3_t0bxj"]
+[ext_resource type="AudioStream" uid="uid://bv0xbi6omfkil" path="res://ui/selection_success.wav" id="5_s2l7y"]
+[ext_resource type="AudioStream" uid="uid://wvsp3xxwy1k" path="res://ui/selection_fail.wav" id="6_umbcv"]
 
 [node name="StoreCounter" type="VBoxContainer" unique_id=883170132]
 offset_right = 40.0
@@ -29,3 +31,19 @@ theme_override_fonts/font = ExtResource("3_t0bxj")
 theme_override_font_sizes/font_size = 24
 text = "Buy
 1000"
+
+[node name="NotEnoughText" type="Label" parent="." unique_id=2018864842]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_6vovp")
+theme_override_font_sizes/font_size = 12
+text = "NOT
+ENOUGH
+CRYSTAL!!"
+horizontal_alignment = 1
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="." unique_id=1089633733]
+stream = ExtResource("5_s2l7y")
+
+[node name="ButtonFailSound" type="AudioStreamPlayer2D" parent="." unique_id=1491655549]
+stream = ExtResource("6_umbcv")
