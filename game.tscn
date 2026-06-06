@@ -38,7 +38,7 @@ layout_mode = 0
 offset_right = 116.0
 offset_bottom = 96.0
 min_size = 96.0
-icon = ExtResource("6_eow3j")
+icon_texture = ExtResource("6_eow3j")
 initial_value = 1000
 has_use_button = false
 

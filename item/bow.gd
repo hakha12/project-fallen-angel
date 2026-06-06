@@ -10,7 +10,6 @@ func _on_object_detector_body_entered(body: Node2D) -> void:
 	
 	queue_free()
 
-
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	# Check only if below screen
 	if position.y > 800: queue_free()

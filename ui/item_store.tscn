@@ -35,7 +35,7 @@ layout_mode = 2
 layout_mode = 2
 item_name = "Bow"
 min_size = 64.0
-icon = ExtResource("2_0wgrk")
+icon_texture = ExtResource("2_0wgrk")
 price = 3
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/Container" unique_id=1350350477]
@@ -45,7 +45,7 @@ layout_mode = 2
 layout_mode = 2
 item_name = "S. Bow"
 min_size = 64.0
-icon = ExtResource("3_dithk")
+icon_texture = ExtResource("3_dithk")
 price = 20
 
 [node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Container" unique_id=1556178784]
@@ -55,5 +55,5 @@ layout_mode = 2
 layout_mode = 2
 item_name = "Sun"
 min_size = 64.0
-icon = ExtResource("4_qymam")
+icon_texture = ExtResource("4_qymam")
 price = 40

@@ -1,5 +1,12 @@
 extends Node2D
 
+var enemy_type: Array[PackedScene] = [
+	preload("res://enemies/laughing_face.tscn"), # Laughing Face
+	preload("res://enemies/succer.tscn"), # Succer
+	preload("res://enemies/biblical_eye.tscn"), # Biblical Eye
+	preload("res://enemies/praying_cultist.tscn") #Praying Cultist
+]
+
 @export var min_spawn_time: float = 1.0
 @export var max_spawn_time: float = 2.0
 @export var min_speed: float = 100
@@ -7,12 +14,7 @@ extends Node2D
 @export var min_scale: float = 1.0
 @export var max_scale: float = 2.0
 
-var enemy_type: Array[PackedScene] = [
-	preload("res://enemies/laughing_face.tscn"), # Laughing Face
-	preload("res://enemies/succer.tscn"), # Succer
-	preload("res://enemies/biblical_eye.tscn"), # Biblical Eye
-	preload("res://enemies/praying_cultist.tscn") #Praying Cultist
-]
+@onready var spawn_timer: Timer = $SpawnTimer
 
 func destroy() -> void:
 	for child in get_children():
@@ -31,4 +33,4 @@ func _on_spawn_timer_timeout() -> void:
 	new_enemy.scale = Vector2(scale_factor, scale_factor)
 	add_child(new_enemy)
 	
-	$SpawnTimer.wait_time = randf_range(min_spawn_time, max_spawn_time)
+	spawn_timer.wait_time = randf_range(min_spawn_time, max_spawn_time)

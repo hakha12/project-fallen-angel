@@ -1,25 +1,30 @@
 extends Node
 
+@onready var player: Player = $Level/Player
+@onready var level: Level = $Level
+@onready var health_manager: Control = $UI/HealthManager
+@onready var item_manager: ItemManager = $UI/ItemManager
+@onready var item_store: ItemStore = $UI/ItemStore
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Level/Player.item_collected.connect($UI/ItemManager._on_player_item_collected)
-	$Level/Player.player_hit.connect($UI/HealthManager._on_player_hit)
-	$Level/DayTimer.timeout.connect($UI/ItemManager._on_day_timer_timeout)
-	$Level/NightTimer.timeout.connect($UI/ItemManager._on_night_timer_timeout)
-	$UI/ItemManager.spawn_sun.connect($Level._on_spawn_sun)
-	$Level/SunSpawner.sun_used.connect($UI/ItemManager._on_sun_used)
-	$UI/ItemManager.spawn_bow.connect($Level/BowSpawner._on_bow_spawn)
-	$Level/BowSpawner.bow_used.connect($UI/ItemManager._on_bow_used)
-	$UI/ItemStore.item_selected.connect($UI/ItemManager._on_store_item_selected)
-	$UI/ItemManager.item_purchase.connect($UI/ItemStore._on_item_purchase)
+	player.item_collected.connect(item_manager._on_player_item_collected)
+	player.player_hit.connect(health_manager._on_player_hit)
+	level.day_timer.timeout.connect(item_manager._on_day_timer_timeout)
+	level.night_timer.timeout.connect(item_manager._on_night_timer_timeout)
+	item_manager.spawn_sun.connect(level._on_spawn_sun)
+	level.sun_spawner.sun_used.connect(item_manager._on_sun_used)
+	item_manager.spawn_bow.connect(level.bow_spawner._on_bow_spawn)
+	level.bow_spawner.bow_used.connect(item_manager._on_bow_used)
+	item_store.item_selected.connect(item_manager._on_store_item_selected)
+	item_manager.item_purchase.connect(item_store._on_item_purchase)
 	
-	$UI/ItemManager.hide()
-	$UI/ItemStore.hide()
+	item_manager.hide()
+	item_store.hide()
 
 func _process(delta: float) -> void:
-	if $Level.night_counter >= 1:
-		$UI/ItemManager.show()
+	if level.night_counter >= 1:
+		item_manager.show()
 		
-		if not $Level/DayTimer.is_stopped(): $UI/ItemStore.show()
-		else: $UI/ItemStore.hide()
+		if not level.day_timer.is_stopped(): item_store.show()
+		else: item_store.hide()

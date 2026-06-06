@@ -4,17 +4,19 @@ extends CharacterBody2D
 signal item_collected(item_type: RigidBody2D)
 signal player_hit(damage: int)
 
-@export var health : int = 100
+var wiggle_velocity: float = 0.0
 
+@export var health : int = 100
 @export var wiggling_speed := 80.0
 @export var max_wiggle := 10.0
 @export var spring_strength: float = 90.0
 @export var damping: float = 10.0
 
-var wiggle_velocity: float = 0.0
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-	$AnimationPlayer.play("wiggle")
+	animation.play("wiggle")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -38,9 +40,9 @@ func _physics_process(delta: float) -> void:
 		#rotation_degrees = move_toward(rotation_degrees, direction * max_wiggle, 0.75 * wiggling_speed * delta)
 		
 	if wiggle_velocity > 1.0:
-		$Sprite2D.flip_h = true
+		sprite.flip_h = true
 	elif wiggle_velocity < -1.0:
-		$Sprite2D.flip_h = false
+		sprite.flip_h = false
 
 
 	#else:

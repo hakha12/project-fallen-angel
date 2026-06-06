@@ -4,7 +4,7 @@ extends CharacterBody2D
 var speed: float = 300.0
 var is_floating: bool = false
 var jump_velocity: float = 0
-var jump_timer: float = 1.0
+var jump_timer_interval: float = 1.0
 var direction: Vector2
 
 @onready var object_detector = {
@@ -14,13 +14,15 @@ var direction: Vector2
 	"right": $DetectorRight,
 }
 
+@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
+@onready var jump_timer: Timer = $JumpTimer
 
 func _ready() -> void:
-	$JumpTimer.wait_time = jump_timer
+	jump_timer.wait_time = jump_timer_interval
 	
-	if $AnimatedSprite2D.sprite_frames != null:
-		$AnimatedSprite2D.play("default")
+	if animation.sprite_frames != null:
+		animation.play("default")
 
 func _on_jump_timer_timeout() -> void:
 	if is_floating: return #Use separate method for moving in Y axis when floating
@@ -30,8 +32,13 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
-	if body is Player: body.player_hit.emit(1)
-
+	if body is Player: 
+		body.player_hit.emit(1)
+		body.sprite.modulate = Color(255, 0, 0)
+		
+		await get_tree().create_timer(0.25).timeout
+		
+		body.sprite.modulate = Color(1, 1, 1, 1)
 
 func _on_death_sound_finished() -> void:
 	queue_free()
