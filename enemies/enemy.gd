@@ -1,6 +1,8 @@
 class_name Enemy
 extends CharacterBody2D
 
+signal killed
+
 var speed: float = 300.0
 var is_floating: bool = false
 var jump_velocity: float = 0
@@ -41,4 +43,5 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 		body.sprite.modulate = Color(1, 1, 1, 1)
 
 func _on_death_sound_finished() -> void:
+	killed.emit()
 	queue_free()

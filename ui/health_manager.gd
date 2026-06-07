@@ -1,5 +1,7 @@
 extends Control
 
+signal player_dies
+
 @export var initial_health: int = 1000
 
 @onready var health_counter: ItemCounter = $HealthCounter

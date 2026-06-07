@@ -7,6 +7,8 @@ var enemy_type: Array[PackedScene] = [
 	preload("res://enemies/praying_cultist.tscn") #Praying Cultist
 ]
 
+var enemy_killed: int = 0
+
 @export var min_spawn_time: float = 1.0
 @export var max_spawn_time: float = 2.0
 @export var min_speed: float = 100
@@ -31,6 +33,10 @@ func _on_spawn_timer_timeout() -> void:
 	
 	var scale_factor = randf_range(min_scale, max_scale)
 	new_enemy.scale = Vector2(scale_factor, scale_factor)
+	new_enemy.killed.connect(_on_enemy_killed)
 	add_child(new_enemy)
 	
 	spawn_timer.wait_time = randf_range(min_spawn_time, max_spawn_time)
+
+func _on_enemy_killed() -> void:
+	enemy_killed += 1

@@ -1,6 +1,8 @@
 class_name Level
 extends Node2D
 
+signal game_over(night_count: int)
+
 var night_counter: int = 0
 
 @export var day_duration: float = 15.0
@@ -57,9 +59,20 @@ func _on_night_timer_timeout() -> void:
 	crystal_spawner.spawn_timer.stop()
 	crystal_spawner.destroy()
 	bow_spawner.destroy()
+	
+	$Player/Sprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_spawn_sun() -> void:
 	if night_timer.is_stopped(): return
 	else: 
+		# Kill all enemy
+		for child in enemy_spawner:
+			if child is Enemy:
+				child.killed.emit()
+				child.queue_free()
+
 		night_timer.timeout.emit()
 		$SunSpawner.sun_used.emit()
+
+func _on_player_dies() -> void:
+	game_over.emit(night_counter)
