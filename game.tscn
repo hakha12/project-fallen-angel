@@ -3,36 +3,83 @@
 [ext_resource type="PackedScene" uid="uid://cs707yor5qs38" path="res://level/level.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://cv08naovgtxj5" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cy30m1ps0eeo5" path="res://ui/pause_menu.tscn" id="2_feb5d"]
+[ext_resource type="FontFile" uid="uid://cvxvfk8q54tg0" path="res://ui/font/PixelifySans-Bold.ttf" id="3_hve3p"]
+[ext_resource type="Script" uid="uid://c26ydfyi46p0p" path="res://ui/event_text_box.gd" id="3_mfdv2"]
 [ext_resource type="PackedScene" uid="uid://bc6o27861uwv2" path="res://ui/item_manager.tscn" id="4_fc0e3"]
 [ext_resource type="Script" uid="uid://cuuyuqjunm8dr" path="res://ui/health_manager.gd" id="5_eow3j"]
 [ext_resource type="PackedScene" uid="uid://iiwgr7lhim4u" path="res://ui/item_counter.tscn" id="5_ryrav"]
 [ext_resource type="Texture2D" uid="uid://dqq6yfwqnoywc" path="res://item/health.png" id="6_eow3j"]
 [ext_resource type="PackedScene" uid="uid://b2uaorm67tm82" path="res://ui/item_store.tscn" id="8_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://rjlsnvqmuu71" path="res://ui/game_over.tscn" id="9_vef74"]
 
 [node name="Game" type="Node" unique_id=1035654300]
 script = ExtResource("1_feb5d")
 
 [node name="Level" parent="." unique_id=1168569189 instance=ExtResource("1_e2o6t")]
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=97055460]
-
-[node name="ItemManager" parent="UI" unique_id=1655852722 instance=ExtResource("4_fc0e3")]
-offset_top = 111.0
-offset_right = 143.0
-offset_bottom = 181.0
-bow_counter = 99
-super_bow_counter = 99
-
-[node name="PauseMenu" parent="UI" unique_id=1747117682 instance=ExtResource("2_feb5d")]
-visible = false
-
-[node name="HealthManager" type="Control" parent="UI" unique_id=564016328]
+[node name="EventTextBox" type="Control" parent="." unique_id=1431334587]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("3_mfdv2")
+
+[node name="Day0Text" type="RichTextLabel" parent="EventTextBox" unique_id=970994704]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 55.0
+offset_right = 1179.0
+offset_bottom = 603.0
+theme_override_fonts/normal_font = ExtResource("3_hve3p")
+theme_override_font_sizes/normal_font_size = 24
+text = "Ah you poor thing, everyone's telling me that there is no way you'll pass the first night unscathed, but I know you'll entertain me for much longer than that right...
+
+You can use LEFT and RIGHT arrow key to move, not that you can do much in this state... You can also press ESC to PAUSE the game. Can't use that to pause me though...
+
+Anyway, enjoy this calm window before the storm arrive... or press ENTER to make the night approach immediately"
+horizontal_alignment = 1
+
+[node name="Day1Text" type="RichTextLabel" parent="EventTextBox" unique_id=745431296]
+visible = false
+layout_mode = 0
+offset_left = 113.0
+offset_top = 55.0
+offset_right = 1179.0
+offset_bottom = 603.0
+theme_override_fonts/normal_font = ExtResource("3_hve3p")
+theme_override_font_sizes/normal_font_size = 24
+text = "Well...
+
+The fact that you did well this first night surpass my expectation (or maybe you did not, but there is no way I'll know since this is a pre-recorded text (laugh)
+
+Anyway, from now on there are several things you can purchase. which I think would be helpful for your stay here, although you have to find their effectiveness on your own...
+
+Anyway, this is the last time you'll heard from me, since the next time I showed here,  you might already be dead. So, HAVE FUN <3"
+horizontal_alignment = 1
+
+[node name="UI" type="Control" parent="." unique_id=2075710963]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ItemManager" parent="UI" unique_id=1655852722 instance=ExtResource("4_fc0e3")]
+visible = false
+layout_mode = 0
+offset_top = 111.0
+offset_right = 143.0
+offset_bottom = 181.0
+
+[node name="PauseMenu" parent="UI" unique_id=1747117682 instance=ExtResource("2_feb5d")]
+visible = false
+layout_mode = 0
+
+[node name="HealthManager" type="Control" parent="UI" unique_id=564016328]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("5_eow3j")
-initial_health = 100
+initial_health = 20
 
 [node name="HealthCounter" parent="UI/HealthManager" unique_id=2057606301 instance=ExtResource("5_ryrav")]
 layout_mode = 0
@@ -44,7 +91,17 @@ initial_value = 1000
 has_use_button = false
 
 [node name="ItemStore" parent="UI" unique_id=206594859 instance=ExtResource("8_j5wjh")]
+visible = false
+layout_mode = 0
 offset_left = 765.0
 offset_top = 284.0
 offset_right = 1158.0
 offset_bottom = 428.0
+
+[node name="GameOver" parent="UI" unique_id=11656099 instance=ExtResource("9_vef74")]
+visible = false
+layout_mode = 0
+offset_left = 446.0
+offset_top = 219.0
+offset_right = 828.0
+offset_bottom = 362.0

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1qfrywirlhlm" path="res://item/crystal.gd" id="1_h6gxg"]
 [ext_resource type="SpriteFrames" uid="uid://ckaowaj7grtgb" path="res://item/crystal_sprite_frames.tres" id="2_vwjju"]
+[ext_resource type="AudioStream" uid="uid://bko681cka4sqc" path="res://item/crystal_collected.wav" id="3_tbpl7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwjju"]
 radius = 7.0
@@ -30,6 +31,9 @@ collision_layer = 8
 shape = SubResource("CircleShape2D_tp6xr")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1367009496]
+
+[node name="CollectedSound" type="AudioStreamPlayer2D" parent="." unique_id=42854156]
+stream = ExtResource("3_tbpl7")
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

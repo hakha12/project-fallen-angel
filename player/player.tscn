@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bgkfc7gvwd6v2" path="res://player/player_spritesheet.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://vka8lqs1kyfb" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="AudioStream" uid="uid://ddh8bv1wxjmqb" path="res://player/player_move_sound.wav" id="3_g1dw6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
 radius = 37.0
@@ -77,3 +78,8 @@ shape = SubResource("CapsuleShape2D_rkbax")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=41616815]
 libraries/ = SubResource("AnimationLibrary_qjkh3")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="." unique_id=985355861]
+stream = ExtResource("3_g1dw6")
+volume_db = 15.831
+pitch_scale = 0.36

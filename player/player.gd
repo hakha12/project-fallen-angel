@@ -14,6 +14,7 @@ var wiggle_velocity: float = 0.0
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var hit_sound: AudioStreamPlayer2D = $HitSound
 
 func _ready() -> void:
 	animation.play("wiggle")
@@ -26,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
+	
 	
 		# Target rotation.
 	var target_rotation := direction * max_wiggle

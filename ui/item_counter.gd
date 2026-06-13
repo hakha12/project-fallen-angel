@@ -32,7 +32,6 @@ func _ready() -> void:
 		var new_action := InputEventAction.new()
 		new_action.action = action_event
 		new_shortcut.events = [new_action]
-		print(action_event)
 		button.shortcut = new_shortcut
 		button.text = "Use [" + keyboard_shortcut + "]"
 

@@ -15,8 +15,13 @@ var enemy_killed: int = 0
 @export var max_speed: float = 200
 @export var min_scale: float = 1.0
 @export var max_scale: float = 2.0
+@export var scale_increase_per_night: float = 1.0
 
 @onready var spawn_timer: Timer = $SpawnTimer
+
+func increase_enemy_scale() -> void:
+	min_scale *= scale_increase_per_night
+	max_scale *= scale_increase_per_night
 
 func destroy() -> void:
 	for child in get_children():

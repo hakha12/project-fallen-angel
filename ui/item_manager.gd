@@ -5,10 +5,15 @@ signal spawn_sun()
 signal spawn_bow(count: int)
 signal item_purchase(item_type: int, success: bool)
 
-@export var coin_counter :int = 0
-@export var bow_counter: int = 0
-@export var super_bow_counter: int = 0
-@export var sun_counter: int = 0
+var coin_counter: int = 0
+var bow_counter: int = 0
+var super_bow_counter: int = 0
+var sun_counter: int = 0
+
+@export var initial_coin: int = 0
+@export var initial_bow: int = 0
+@export var initial_super_bow: int = 0
+@export var initial_sun: int = 0
 @export var warning_show_time: float = 0.5
 
 @onready var crystal: ItemCounter = $Container/Crystal
@@ -18,14 +23,11 @@ signal item_purchase(item_type: int, success: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	crystal.update_label(coin_counter)
-	bow.update_label(bow_counter)
-	super_bow.update_label(super_bow_counter)
-	sun.update_label(sun_counter)
-	
 	bow.button.pressed.connect(_on_bow_button_pressed)
 	super_bow.button.pressed.connect(_on_super_bow_button_pressed)
 	sun.button.pressed.connect(_on_sun_button_pressed)
+	
+	_reset_item_count()
 
 func collect_coin():
 	coin_counter += 1
@@ -35,11 +37,25 @@ func collect_bow():
 	bow_counter += 1
 	bow.update_label(bow_counter)
 
+func _reset_item_count() -> void:
+	coin_counter = initial_coin
+	bow_counter = initial_bow
+	super_bow_counter = initial_super_bow
+	sun_counter = initial_sun
+	
+	crystal.update_label(coin_counter)
+	bow.update_label(bow_counter)
+	super_bow.update_label(super_bow_counter)
+	sun.update_label(sun_counter)
+	
+
 func _on_store_item_selected(item_type: int, price: int):
 	var success
 	if price > coin_counter: 
 		success = false
 	else:
+		if item_type == 0:
+			pass
 		if item_type == 1: 
 			bow_counter += 1
 			bow.update_label(bow_counter)
@@ -117,3 +133,11 @@ func _on_bow_used(count: int) -> void:
 	else:
 		super_bow_counter -= 1
 		super_bow.update_label(super_bow_counter)
+
+func _on_game_over(_a, _b) -> void:
+	bow.hide()
+	super_bow.hide()
+	sun.hide()
+
+func _on_game_reset() -> void:
+	_reset_item_count()

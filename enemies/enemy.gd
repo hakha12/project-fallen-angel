@@ -17,6 +17,7 @@ var direction: Vector2
 }
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
 @onready var jump_timer: Timer = $JumpTimer
 
@@ -36,6 +37,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body is Player: 
 		body.player_hit.emit(1)
+		body.hit_sound.play()
 		body.sprite.modulate = Color(255, 0, 0)
 		
 		await get_tree().create_timer(0.25).timeout

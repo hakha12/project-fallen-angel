@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bvkvswk4q5jmp" path="res://item/bow.png" id="2_0wgrk"]
 [ext_resource type="FontFile" uid="uid://cvxvfk8q54tg0" path="res://ui/font/PixelifySans-Bold.ttf" id="2_dithk"]
 [ext_resource type="Texture2D" uid="uid://dx6c8jvt17ct" path="res://item/super_bows.png" id="3_dithk"]
+[ext_resource type="Texture2D" uid="uid://dqq6yfwqnoywc" path="res://item/health.png" id="4_kqgco"]
 [ext_resource type="Texture2D" uid="uid://bjja47nyhu0r7" path="res://item/sun.png" id="4_qymam"]
 
 [node name="ItemStore" type="Control" unique_id=206594859]
@@ -23,7 +24,13 @@ offset_bottom = 40.0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_dithk")
 theme_override_font_sizes/font_size = 36
-text = "Item Shop"
+text = "ITEM SHOP"
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=2025796526]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_dithk")
+theme_override_font_sizes/font_size = 18
+text = "Press ENTER to skip to the next night"
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=718189329]
 layout_mode = 2
@@ -31,12 +38,22 @@ layout_mode = 2
 [node name="Container" type="HBoxContainer" parent="VBoxContainer" unique_id=1601079233]
 layout_mode = 2
 
-[node name="Bow" parent="VBoxContainer/Container" unique_id=883170132 instance=ExtResource("1_3g13g")]
+[node name="Heart" parent="VBoxContainer/Container" unique_id=883170132 instance=ExtResource("1_3g13g")]
+layout_mode = 2
+item_name = "Heart"
+min_size = 64.0
+icon_texture = ExtResource("4_kqgco")
+price = 1
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Container" unique_id=1627985394]
+layout_mode = 2
+
+[node name="Bow" parent="VBoxContainer/Container" unique_id=278890608 instance=ExtResource("1_3g13g")]
 layout_mode = 2
 item_name = "Bow"
 min_size = 64.0
 icon_texture = ExtResource("2_0wgrk")
-price = 3
+price = 2
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/Container" unique_id=1350350477]
 layout_mode = 2
@@ -46,7 +63,7 @@ layout_mode = 2
 item_name = "S. Bow"
 min_size = 64.0
 icon_texture = ExtResource("3_dithk")
-price = 20
+price = 10
 
 [node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Container" unique_id=1556178784]
 layout_mode = 2

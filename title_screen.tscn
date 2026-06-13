@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://ch51kg268nhgx"]
+
+[ext_resource type="Script" uid="uid://bxn40kwx8wluq" path="res://title_screen.gd" id="1_ak2if"]
+[ext_resource type="SpriteFrames" uid="uid://b3cq035aadqtq" path="res://level/background_sprite_frames.tres" id="1_v6p8y"]
+[ext_resource type="PackedScene" uid="uid://cchurm57n5w8y" path="res://level/enemy_spawner.tscn" id="2_hafda"]
+[ext_resource type="FontFile" uid="uid://cvxvfk8q54tg0" path="res://ui/font/PixelifySans-Bold.ttf" id="3_ig5kc"]
+[ext_resource type="FontFile" uid="uid://csleksmoyhn1x" path="res://ui/font/PixelifySans-Regular.ttf" id="4_05l2w"]
+[ext_resource type="Shader" uid="uid://sv471qdrujq3" path="res://level/glitchy.gdshader" id="4_tpml5"]
+[ext_resource type="Shader" uid="uid://ce4stj7i3kvyr" path="res://level/night.gdshader" id="5_8vmu4"]
+[ext_resource type="AudioStream" uid="uid://dxsjfa5fl34lj" path="res://title_screen_day.wav" id="7_013yr"]
+[ext_resource type="AudioStream" uid="uid://bdrs0ttarophp" path="res://title_screen_night.wav" id="8_8vmu4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqemp"]
+shader = ExtResource("4_tpml5")
+shader_parameter/shake_power = 0.005
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 1.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfn3p"]
+shader = ExtResource("5_8vmu4")
+shader_parameter/shake = 0.0
+
+[node name="TitleScreen" type="Node" unique_id=1361208149]
+script = ExtResource("1_ak2if")
+
+[node name="Background" type="ColorRect" parent="." unique_id=642341785]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.1818161, 0.09972019, 0.043862857, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2113963595]
+position = Vector2(635.9999, 305)
+scale = Vector2(2.1819444, 2.1819444)
+sprite_frames = ExtResource("1_v6p8y")
+
+[node name="EnemySpawner" parent="." unique_id=1368029096 instance=ExtResource("2_hafda")]
+visible = false
+min_spawn_time = 0.25
+max_spawn_time = 0.5
+min_scale = 2.0
+max_scale = 4.0
+
+[node name="DayLight" type="DirectionalLight2D" parent="." unique_id=114229438]
+color = Color(0.81199414, 0.9141624, 0.830764, 1)
+energy = 0.3
+
+[node name="NightNoise" type="ColorRect" parent="." unique_id=798853232]
+visible = false
+material = SubResource("ShaderMaterial_jqemp")
+offset_right = 1279.0
+offset_bottom = 721.0
+
+[node name="Background2" type="ColorRect" parent="." unique_id=2048598200]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.18039216, 0.09803922, 0.043137256, 0.40784314)
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." unique_id=1668877009]
+copy_mode = 2
+
+[node name="CRTFilter" type="ColorRect" parent="." unique_id=1700222127]
+material = SubResource("ShaderMaterial_xfn3p")
+offset_right = 1282.0
+offset_bottom = 717.0
+mouse_filter = 2
+color = Color(0.46666667, 0.46666667, 0.46666667, 1)
+
+[node name="Control" type="Control" parent="." unique_id=852834185]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 557.0
+offset_top = 266.0
+offset_right = 597.0
+offset_bottom = 306.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=786688835]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.432
+anchor_right = -1.432
+offset_left = -209.72
+offset_right = 490.28
+offset_bottom = 59.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer" unique_id=27166122]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ig5kc")
+theme_override_font_sizes/font_size = 48
+text = "Project Fallen Angel"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer" unique_id=1874840023]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ig5kc")
+theme_override_font_sizes/font_size = 32
+text = "PRESS to START"
+
+[node name="DifficultyContainer" type="VBoxContainer" parent="Control/VBoxContainer" unique_id=1518804166]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer/DifficultyContainer" unique_id=1848817798]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/DifficultyContainer" unique_id=1999577237]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_05l2w")
+theme_override_font_sizes/font_size = 36
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="NormalDifficulty" type="Button" parent="Control/VBoxContainer/DifficultyContainer" unique_id=278270108]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ig5kc")
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="HardDifficulty" type="Button" parent="Control/VBoxContainer/DifficultyContainer" unique_id=1090796465]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ig5kc")
+theme_override_font_sizes/font_size = 32
+text = "Readme / Guide"
+
+[node name="DayBGM" type="AudioStreamPlayer" parent="." unique_id=937996260]
+stream = ExtResource("7_013yr")
+volume_db = -15.0
+
+[node name="NightBGM" type="AudioStreamPlayer" parent="." unique_id=1371765080]
+stream = ExtResource("8_8vmu4")
+volume_db = 5.0
+
+[connection signal="pressed" from="Control/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/DifficultyContainer/NormalDifficulty" to="." method="_on_normal_difficulty_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/DifficultyContainer/HardDifficulty" to="." method="_on_hard_difficulty_pressed"]
+[connection signal="finished" from="DayBGM" to="." method="_on_day_bgm_finished"]
+[connection signal="finished" from="NightBGM" to="." method="_on_night_bgm_finished"]

@@ -1,54 +1,39 @@
 [gd_scene format=3 uid="uid://cs707yor5qs38"]
 
-[ext_resource type="Texture2D" uid="uid://cldea6irhnlbo" path="res://level/backgrounds/background_1.png" id="1_44x8d"]
 [ext_resource type="Script" uid="uid://yqmrte84e4xo" path="res://level/level.gd" id="1_ivpvi"]
-[ext_resource type="Texture2D" uid="uid://c3mhuyqchvxes" path="res://level/backgrounds/background_2.png" id="2_ivpvi"]
-[ext_resource type="Texture2D" uid="uid://wyi3frogcdhu" path="res://level/backgrounds/background_3.png" id="3_0v1st"]
-[ext_resource type="Texture2D" uid="uid://q80g7ockitpt" path="res://level/backgrounds/background_4.png" id="4_6gtgk"]
-[ext_resource type="Texture2D" uid="uid://qnxoo2h0aqd5" path="res://level/backgrounds/background_5.png" id="5_cw150"]
+[ext_resource type="SpriteFrames" uid="uid://b3cq035aadqtq" path="res://level/background_sprite_frames.tres" id="2_rhqlf"]
 [ext_resource type="Texture2D" uid="uid://cyxa6mgqdkwi6" path="res://level/ground.png" id="6_xii2b"]
 [ext_resource type="PackedScene" uid="uid://cchurm57n5w8y" path="res://level/enemy_spawner.tscn" id="7_6gtgk"]
+[ext_resource type="Shader" uid="uid://sv471qdrujq3" path="res://level/glitchy.gdshader" id="7_7jqyl"]
 [ext_resource type="PackedScene" uid="uid://ioho3wq00045" path="res://player/player.tscn" id="9_6gtgk"]
 [ext_resource type="PackedScene" uid="uid://clof27kgiyf2q" path="res://level/crystal_spawner.tscn" id="9_cw150"]
 [ext_resource type="Shader" uid="uid://ce4stj7i3kvyr" path="res://level/night.gdshader" id="10_l5lfc"]
 [ext_resource type="Script" uid="uid://plly8ldh7cwv" path="res://level/bow_spawner.gd" id="10_rhqlf"]
 [ext_resource type="Script" uid="uid://bmt4n8kbpfd27" path="res://level/sun_spawner.gd" id="10_xii2b"]
+[ext_resource type="AudioStream" uid="uid://bfyi5gbhmk8oh" path="res://level/day_bgm.wav" id="14_m3nah"]
+[ext_resource type="AudioStream" uid="uid://bqn7cr00og34v" path="res://level/night_bgm.wav" id="15_fm1jd"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rhqlf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_44x8d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_ivpvi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_0v1st")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_6gtgk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_cw150")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5ivw"]
+shader = ExtResource("7_7jqyl")
+shader_parameter/shake_power = 0.005
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 1.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5lfc"]
 size = Vector2(449, 362)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3nah"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5lfc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jqyl"]
 shader = ExtResource("10_l5lfc")
-shader_parameter/shake = 0.0230000010925
+shader_parameter/shake = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3nah"]
 
 [node name="Level" type="Node2D" unique_id=1168569189]
 script = ExtResource("1_ivpvi")
-night_duration = 15.0
+day_duration = 16.0
+night_duration = 16.0
 
 [node name="Background" type="ColorRect" parent="." unique_id=1340717413]
 offset_right = 1280.0
@@ -57,14 +42,9 @@ color = Color(0.1818161, 0.09972019, 0.043862857, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background" unique_id=1102873932]
 position = Vector2(640, 360)
-sprite_frames = SubResource("SpriteFrames_rhqlf")
+sprite_frames = ExtResource("2_rhqlf")
+autoplay = "default"
 frame_progress = 0.32102686
-
-[node name="NightForeground" type="ColorRect" parent="." unique_id=1546973963]
-visible = false
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.18039216, 0.09803922, 0.043137256, 0.59607846)
 
 [node name="EnemySpawner" parent="." unique_id=1368029096 instance=ExtResource("7_6gtgk")]
 max_spawn_time = 1.0
@@ -72,6 +52,23 @@ max_spawn_time = 1.0
 [node name="Player" parent="." unique_id=647429366 instance=ExtResource("9_6gtgk")]
 position = Vector2(641, 611)
 max_wiggle = 20.0
+
+[node name="BowSpawner" type="Node2D" parent="." unique_id=1081035594]
+script = ExtResource("10_rhqlf")
+
+[node name="NightNoise" type="ColorRect" parent="." unique_id=906203035]
+visible = false
+material = SubResource("ShaderMaterial_m5ivw")
+offset_right = 1279.0
+offset_bottom = 721.0
+
+[node name="SunSpawner" type="Node2D" parent="." unique_id=674664519]
+script = ExtResource("10_xii2b")
+
+[node name="CrystalSpawner" parent="." unique_id=1209211049 instance=ExtResource("9_cw150")]
+min_spawn_time = 0.5
+max_spawn_time = 1.0
+crystal_scale_factor = 0.25
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=490585709]
 position = Vector2(640, 844.675)
@@ -85,16 +82,15 @@ texture = ExtResource("6_xii2b")
 position = Vector2(0.5, -50.674988)
 shape = SubResource("RectangleShape2D_l5lfc")
 
-[node name="BowSpawner" type="Node2D" parent="." unique_id=1081035594]
-script = ExtResource("10_rhqlf")
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." unique_id=1018078885]
+copy_mode = 2
 
-[node name="SunSpawner" type="Node2D" parent="." unique_id=674664519]
-script = ExtResource("10_xii2b")
-
-[node name="CrystalSpawner" parent="." unique_id=1209211049 instance=ExtResource("9_cw150")]
-min_spawn_time = 0.5
-max_spawn_time = 1.0
-crystal_scale_factor = 0.25
+[node name="CRTFilter" type="ColorRect" parent="." unique_id=2037152629]
+material = SubResource("ShaderMaterial_7jqyl")
+offset_right = 1282.0
+offset_bottom = 717.0
+mouse_filter = 2
+color = Color(0.46666667, 0.46666667, 0.46666667, 1)
 
 [node name="DayForeground" type="ColorRect" parent="." unique_id=627488428]
 material = SubResource("ShaderMaterial_m3nah")
@@ -102,16 +98,21 @@ offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.18039216, 0.09803922, 0.043137256, 0.2784314)
 
-[node name="NightNoise" type="ColorRect" parent="." unique_id=2014075519]
-visible = false
-material = SubResource("ShaderMaterial_l5lfc")
-offset_right = 1282.0
-offset_bottom = 717.0
-color = Color(0.46618086, 0.4661808, 0.4661808, 1)
-
 [node name="DayTimer" type="Timer" parent="." unique_id=753066469]
 
+[node name="DayBGM" type="AudioStreamPlayer" parent="." unique_id=1201696784]
+stream = ExtResource("14_m3nah")
+
+[node name="DayLight" type="DirectionalLight2D" parent="." unique_id=710836505]
+visible = false
+color = Color(0.23529412, 0.35686275, 0.2627451, 1)
+energy = 0.44
+
 [node name="NightTimer" type="Timer" parent="." unique_id=1448936605]
+
+[node name="NightBGM" type="AudioStreamPlayer" parent="." unique_id=9807995]
+stream = ExtResource("15_fm1jd")
+volume_db = -10.0
 
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
 [connection signal="timeout" from="NightTimer" to="." method="_on_night_timer_timeout"]

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://rjlsnvqmuu71"]
+
+[ext_resource type="Script" uid="uid://cpbxihbrpyvko" path="res://ui/game_over.gd" id="1_5eixk"]
+[ext_resource type="FontFile" uid="uid://cvxvfk8q54tg0" path="res://ui/font/PixelifySans-Bold.ttf" id="1_oo8kp"]
+
+[node name="GameOver" type="Control" unique_id=11656099]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 635.0
+offset_bottom = 144.0
+script = ExtResource("1_5eixk")
+
+[node name="Container" type="VBoxContainer" parent="." unique_id=1947111278]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 46.0
+offset_bottom = 41.0
+
+[node name="Label" type="Label" parent="Container" unique_id=1924475833]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oo8kp")
+theme_override_font_sizes/font_size = 72
+text = "GAME OVER !"
+
+[node name="NightSurvived" type="Label" parent="Container" unique_id=388029429]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oo8kp")
+theme_override_font_sizes/font_size = 36
+text = "Night Survived: 100"
+horizontal_alignment = 1
+
+[node name="KillCount" type="Label" parent="Container" unique_id=1195488774]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oo8kp")
+theme_override_font_sizes/font_size = 36
+text = "Monster Killed: 100"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Container" unique_id=1477948346]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oo8kp")
+theme_override_font_sizes/font_size = 32
+text = "Restart [Enter]"
+
+[node name="MainMenuButton" type="Button" parent="Container" unique_id=1594238447]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oo8kp")
+theme_override_font_sizes/font_size = 32
+text = "Return to Title [Back]"
+
+[connection signal="pressed" from="Container/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Container/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

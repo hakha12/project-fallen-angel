@@ -7,6 +7,5 @@
 [node name="Enemy" unique_id=2134187204 instance=ExtResource("1_ax7um")]
 script = ExtResource("2_t8lq7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1712372222]
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=765250784]
 sprite_frames = ExtResource("2_5oyqx")
-frame_progress = 0.31482887
